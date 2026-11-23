@@ -13,10 +13,13 @@ jobs:
         with:
           node-version: 20
 
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
       - name: Install deps
-        run: |
-          corepack enable
-          yarn install --network-timeout 600000
+        run: yarn install --network-timeout 600000
 
       - name: Build PWA
         run: yarn build
