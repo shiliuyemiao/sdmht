@@ -29,6 +29,18 @@ jobs:
           test -d dist/pwa
           npm i -D @capacitor/cli@6 @capacitor/core@6 @capacitor/android@6
           npx cap init "神代梦华谭" "work.star2000.sdmht" --web-dir dist/pwa
+          rm -f capacitor.config.ts capacitor.config.json
+          cat > capacitor.config.json <<'JSON'
+          {
+            "appId": "work.star2000.sdmht",
+            "appName": "神代梦华谭",
+            "webDir": "dist/pwa",
+            "server": {
+              "hostname": "sdmht.star2000.work",
+              "androidScheme": "https"
+            }
+          }
+          JSON
           npx cap add android
           npx cap sync android
 
